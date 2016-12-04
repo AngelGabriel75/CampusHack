@@ -86,8 +86,58 @@ if(isset($_POST['respond_request'])) {
 
 
 	<div class="profile_main_column column">
-		<div class="posts_area"></div>
-    <img id="loading" src="assets/images/icons/loading.gif">
+
+    <ul class="nav nav-tabs" role="tablist" id="profileTabs">
+      <li role="presentation" class="active"><a href="newsfeed_div" aria-controls="newsfeed_div" role="tab" data-toggle="tab">Newsfeed</a></li>
+      <li role="presentation"><a href="about_div" aria-controls="about_div" role="tab" data-toggle="tab">About</a></li>
+      <li role="presentation"><a href="messages_div" aria-controls="messages_div" role="tab" data-toggle="tab">Messages</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane fade in active" id="newsfeed_div">
+            <div class="posts_area"></div>
+            <img id="loading" src="assets/images/icons/loading.gif">
+      </div>
+    </div>
+
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade" id="about_div">
+
+        </div>
+      </div>
+
+    <div class="tab-content">
+      <div role="tabpanel" class="tab-pane fade" id="messages_div">
+            <?php  
+
+          echo "<h4>You and <a href='"$profileUsername['username'] ."'>" . $user_to_obj->getFirstAndLastName() . "</a></h4><hr><br>";
+
+          echo "<div class='loaded_messages' id='scroll_messages'>";
+            echo $message_obj->getMessages($profileUsername['username']);
+          echo "</div>";
+
+        ?>
+
+
+
+        <div class="message_post">
+          <form action="" method="POST">
+            <textarea name='message_body' id='message_textarea' placeholder='Write your message ...'></textarea>
+            <input type='submit' name='post_message' class='info' id='message_submit' value='Send'>
+
+           
+          </form>
+
+        </div>
+
+        <script>
+          var div = document.getElementById("scroll_messages");
+          div.scrollTop = div.scrollHeight;
+        </script>
+      </div>
+    </div>      
+
+
 
 
 	</div>
