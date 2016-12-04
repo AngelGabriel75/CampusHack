@@ -13,8 +13,8 @@ class Post{
 		$body = mysqli_real_escape_string($this->con, $body);
 		$check_empty = preg_replace('/\s+/','', $body); //Delete all spaces.
 
-		if ($check_empty != "") {
-			
+		if($check_empty != "") {
+
 
 			//Current date and time
 			$date_added = date("Y-m-d H:i:s");
@@ -190,9 +190,9 @@ class Post{
 									<br>
 								</div>
 
-								<div class='newsFeedPostOptions'>
+								<div class='newsfeedPostOptions'>
 									Comments($comments_check_num)&nbsp;&nbsp;&nbsp;
-
+									<iframe src='like.php?post_id=$id' scrolling='no'><iframe>
 								</div>
 
 
