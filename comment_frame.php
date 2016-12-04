@@ -5,6 +5,13 @@
 </head>
 <body>
 
+	<style type="text/css">
+		*{
+			font-size: 12px;
+			font-family: Arial, Helvetica, Sans-serif;
+		}
+	</style>
+
 	<?php  
 	require 'config/config.php';
 	include("includes/classes/User.php");
@@ -31,7 +38,8 @@
 		}
 	</script>
 
-	<?php  
+	<?php
+	  
 	//Get id of post
 	if(isset($_GET['post_id'])) {
 		$post_id = $_GET['post_id'];
@@ -61,7 +69,7 @@
 	$count = mysqli_num_rows($get_comments);
 	if($count != 0){
 
-		while($comments = mysqli_fetch_array($get_comments)){
+		while($comment = mysqli_fetch_array($get_comments)){
 			$comment_body = $comment['post_body'];
 			$posted_to = $comment['posted_to'];
 			$posted_by = $comment['posted_by'];
@@ -70,7 +78,7 @@
 
 			//Timeframe
 			$date_time_now = date("Y-m-d H:i:s");
-			$start_date = new DateTime($date_time); //Time of Post
+			$start_date = new DateTime($date_added); //Time of Post
 			$end_date = new DateTime($date_time_now);	//Current Time
 			$interval = $start_date->diff($end_date); 	//Difference between dates
 			if($interval->y >= 1){
@@ -122,14 +130,21 @@
 
 			$user_obj = new User($con, $posted_by);
 
+		?>
+		 <div class="comment_section">
+			 <a href="<?php echo $posted_by?>" target="_parent"><img src="<?php echo $user_obj->getProfilePic(); ?>" title="<?php echo $posted_by; ?>" style="float:left" height="30"></a>
+			 <a href="<?php echo $posted_by?>" target="_parent"> <b><?php echo $user_obj->getFirstAndLastName(); ?> </b></a>
+			 &nbsp;&nbsp;&nbsp;&nbsp; <?php echo $time_message . "<br>" . $comment_body; ?>
+			 <hr> 
+		 </div>	
+		 <?php		
+
 		}
+	} else{
+		echo "<center><br><br> No comments to show! </center>";
 	}
 
 	 ?>
-
-	 <div
-
-
 
 
 
