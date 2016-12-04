@@ -82,7 +82,7 @@
 
 	if($num_rows > 0){
 		echo '<form action="like.php?post_id=' . $post_id. '"method="POST">
-				<input type="submit" class= "comment_like" name="unlike_button" value="UnLike">
+				<input type="submit" class= "comment_like" name="unlike_button" value="Unlike">
 				<div class="like_value">
 					'. $total_likes . ' Likes
 
