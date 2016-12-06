@@ -102,34 +102,38 @@ if(isset($_POST['post_message'])) {
  	</div>
 
 
-	<div class="profile_main_column column">
+<div class="profile_main_column column">
 
     <ul class="nav nav-tabs" role="tablist" id="profileTabs">
-      <li role="presentation" class="active"><a href="newsfeed_div" aria-controls="newsfeed_div" role="tab" data-toggle="tab">Newsfeed</a></li>
-      <li role="presentation"><a href="messages_div" aria-controls="messages_div" role="tab" data-toggle="tab">Messages</a></li>
+      <li role="presentation" class="active"><a href="#newsfeed_div" aria-controls="newsfeed_div" role="tab" data-toggle="tab">Newsfeed</a></li>
+      <li role="presentation"><a href="#messages_div" aria-controls="messages_div" role="tab" data-toggle="tab">Messages</a></li>
     </ul>
 
     <div class="tab-content">
 
       <div role="tabpanel" class="tab-pane fade in active" id="newsfeed_div">
-            <div class="posts_area"></div>
-            <img id="loading" src="assets/images/icons/loading.gif">
+        <div class="posts_area"></div>
+        <img id="loading" src="assets/images/icons/loading.gif">
       </div>
-    </div>
+
 
       <div role="tabpanel" class="tab-pane fade" id="messages_div">
-        <?php 
+        <?php  
+        
+
           echo "<h4>You and <a href='" . $username ."'>" . $profile_user_obj->getFirstAndLastName() . "</a></h4><hr><br>";
 
           echo "<div class='loaded_messages' id='scroll_messages'>";
-            echo $message_obj->getMessages($username['username']);
+            echo $message_obj->getMessages($username);
           echo "</div>";
         ?>
 
+
+
         <div class="message_post">
           <form action="" method="POST">
-            <textarea name='message_body' id='message_textarea' placeholder='Write your message ...'></textarea>
-            <input type='submit' name='post_message' class='info' id='message_submit' value='Send'>           
+              <textarea name='message_body' id='message_textarea' placeholder='Write your message ...'></textarea>
+              <input type='submit' name='post_message' class='info' id='message_submit' value='Send'>
           </form>
 
         </div>
@@ -139,9 +143,12 @@ if(isset($_POST['post_message'])) {
           div.scrollTop = div.scrollHeight;
         </script>
       </div>
-      
 
-	</div>
+
+    </div>
+
+
+  </div>
 
 <!-- Modal -->
 <div class="modal fade" id="post_form" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">

@@ -88,10 +88,10 @@ if(isset($_POST['post_message'])) {
 
 	</div>
 
-	<div class="user_details column" id="conversations">
+	<div class="user_details column" id="conversations" style="height: 376px">
 			<h4>Conversations</h4>
 
-			<div class="loaded_conversations">
+			<div class="loaded_conversations" style="height: 265px">
 				<?php echo $message_obj->getConvos(); ?>
 			</div>
 			<br>
