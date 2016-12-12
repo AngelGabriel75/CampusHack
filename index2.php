@@ -9,7 +9,7 @@ if(isset($_POST['post'])){
 
 
  ?>
-	<div class="user_details column">
+	<div class="user_details column" style="width: 29%">
 		<a href="<?php echo $userLoggedIn; ?>">  <img src="<?php echo $user['profile_pic']; ?>"> </a>
 
 		<div class="user_details_left_right">
@@ -44,7 +44,8 @@ if(isset($_POST['post'])){
 
 	<div class="user_details column" style="border-top-color: #1086ba;
     margin-top: 5px;
-    border-top-width: 45px;">
+    border-top-width: 45px; 
+    ">
 
 		<h4 style="color: blue;">Popular</h4>
 
